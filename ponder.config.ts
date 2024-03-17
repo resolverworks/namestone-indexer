@@ -1,21 +1,23 @@
 import { createConfig } from "@ponder/core";
 import { http } from "viem";
 
-import { ExampleContractAbi } from "./abis/ExampleContractAbi";
+import { TeamNick } from "./abis/TeamNick";
 
 export default createConfig({
   networks: {
-    mainnet: {
-      chainId: 1,
-      transport: http(process.env.PONDER_RPC_URL_1),
+    base: {
+      chainId: 8453,
+      transport: http(
+        process.env.PONDER_RPC_URL_8453 || "https://base.llamarpc.com"
+      ),
     },
   },
   contracts: {
-    ExampleContract: {
-      network: "mainnet",
-      abi: ExampleContractAbi,
-      address: "0x0",
-      startBlock: 1234567,
+    TeamNick: {
+      network: "base",
+      address: "0x7C6EfCb602BC88794390A0d74c75ad2f1249A17f",
+      abi: TeamNick,
+      startBlock: 7128431,
     },
   },
 });
