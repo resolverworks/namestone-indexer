@@ -8,5 +8,6 @@ export default createSchema((p) => ({
     name: p.string(),
     keys: p.string(),
     coinTypes: p.string(),
+    address: p.string(),
   }),
 }));
