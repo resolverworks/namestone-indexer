@@ -13,7 +13,7 @@ ponder.on("TeamNick:Registered", async ({ event, context }) => {
       name: name,
       address: addr,
       keys: "[avatar]",
-      domainId: 1,
+      domainId: 84,
       coinTypes: "[]",
       registeredAt: event.block.timestamp,
     },
