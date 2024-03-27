@@ -10,10 +10,11 @@ ponder.on("TeamNick:Registered", async ({ event, context }) => {
   await NftSubdomain.create({
     id: node,
     data: {
+      tokenId: node,
       name: name,
       address: addr,
       keys: "[avatar]",
-      domainId: 84,
+      domainName: "teamnick.xyz",
       coinTypes: "[]",
       registeredAt: event.block.timestamp,
     },
