@@ -21,12 +21,12 @@ export default createConfig({
     },
   },
   contracts: {
-    TeamNick: {
-      network: "base",
-      address: "0x7C6EfCb602BC88794390A0d74c75ad2f1249A17f",
-      abi: TeamNick,
-      startBlock: 7128431,
-    },
+    // TeamNick: {
+    //   network: "base",
+    //   address: "0x7C6EfCb602BC88794390A0d74c75ad2f1249A17f",
+    //   abi: TeamNick,
+    //   startBlock: 7128431,
+    // },
     CypherPunk: {
       network: "abitrumsepolia",
       address: "0xcdB7fafde2212ec26F58F275FedF07a6Ef69814c",
