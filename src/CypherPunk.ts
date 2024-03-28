@@ -20,15 +20,15 @@ ponder.on("CypherPunk:Registered", async ({ event, context }) => {
   });
 });
 
-ponder.on("CypherPunk:Transfer", async ({ event, context }) => {
-  const { NftSubdomain } = context.db;
-  const tokenId = event.args.tokenId;
-  const addr = event.args.to;
+// ponder.on("CypherPunk:Transfer", async ({ event, context }) => {
+//   const { NftSubdomain } = context.db;
+//   const tokenId = event.args.tokenId;
+//   const addr = event.args.to;
 
-  await NftSubdomain.update({
-    id: tokenId,
-    data: {
-      address: addr,
-    },
-  });
-});
+//   await NftSubdomain.update({
+//     id: tokenId,
+//     data: {
+//       address: addr,
+//     },
+//   });
+// });
