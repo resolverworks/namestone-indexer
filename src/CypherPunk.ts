@@ -42,6 +42,7 @@ ponder.on("CypherPunk:TextChanged", async ({ event, context }) => {
   await NftSubdomain.update({
     id: tokenId,
     data: ({ current }) => {
+      console.log("current", current);
       const textRecords = JSON.parse(current.textRecords);
       console.log("textRecords", textRecords);
       textRecords[key] = value;
