@@ -12,23 +12,41 @@ ponder.on("CypherPunk:Registered", async ({ event, context }) => {
       tokenId: tokenId,
       name: name,
       address: addr,
-      keys: "[avatar,description,location,com.twitter,url]",
+      textRecords: `{avatar:"",description:"",location:"",com.twitter:"",url:""}`,
       domainName: "cu-cypherpunk.eth",
-      coinTypes: "[]",
+      coinTypes: "{}",
       registeredAt: event.block.timestamp,
     },
   });
 });
 
-// ponder.on("CypherPunk:Transfer", async ({ event, context }) => {
-//   const { NftSubdomain } = context.db;
-//   const tokenId = event.args.tokenId;
-//   const addr = event.args.to;
+ponder.on("CypherPunk:Transfer", async ({ event, context }) => {
+  const { NftSubdomain } = context.db;
+  const tokenId = event.args.tokenId;
+  const addr = event.args.to;
 
-//   await NftSubdomain.update({
-//     id: tokenId,
-//     data: {
-//       address: addr,
-//     },
-//   });
-// });
+  await NftSubdomain.update({
+    id: tokenId,
+    data: {
+      address: addr,
+    },
+  });
+});
+
+ponder.on("CypherPunk:TextChanged", async ({ event, context }) => {
+  const { NftSubdomain } = context.db;
+  const tokenId = event.args.token;
+  const key = event.args.key;
+  const value = event.args.value;
+
+  await NftSubdomain.update({
+    id: tokenId,
+    data: ({ current }) => {
+      const textRecords = JSON.parse(current.textRecords);
+      textRecords[key] = value;
+      return {
+        textRecords: JSON.stringify(textRecords),
+      };
+    },
+  });
+});

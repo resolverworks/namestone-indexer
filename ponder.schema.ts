@@ -7,7 +7,7 @@ export default createSchema((p) => ({
     registeredAt: p.bigint(),
     domainName: p.string(),
     name: p.string(),
-    keys: p.string(),
+    textRecords: p.string(),
     coinTypes: p.string(),
     address: p.string(),
   }),
