@@ -43,6 +43,7 @@ ponder.on("CypherPunk:TextChanged", async ({ event, context }) => {
     id: tokenId,
     data: ({ current }) => {
       const textRecords = JSON.parse(current.textRecords);
+      console.log("textRecords", textRecords);
       textRecords[key] = value;
       return {
         textRecords: JSON.stringify(textRecords),
