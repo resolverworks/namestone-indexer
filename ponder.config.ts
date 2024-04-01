@@ -31,7 +31,7 @@ export default createConfig({
       network: "abitrumsepolia",
       address: "0xcdB7fafde2212ec26F58F275FedF07a6Ef69814c",
       abi: CypherPunk,
-      startBlock: 26834457,
+      startBlock: 26834458,
     },
   },
 });
