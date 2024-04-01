@@ -1,5 +1,6 @@
 import { createConfig } from "@ponder/core";
 import { http } from "viem";
+import { rateLimit } from "@ponder/utils";
 
 import { TeamNick } from "./abis/TeamNick";
 import { CypherPunk } from "./abis/CypherPunk";
@@ -14,9 +15,12 @@ export default createConfig({
     // },
     abitrumsepolia: {
       chainId: 421614,
-      transport: http(
-        process.env.PONDER_RPC_URL_421614 ||
-          "https://sepolia-rollup.arbitrum.io/rpc	"
+      transport: rateLimit(
+        http(
+          process.env.PONDER_RPC_URL_421614 ||
+            "https://sepolia-rollup.arbitrum.io/rpc	"
+        ),
+        { requestsPerSecond: 10 }
       ),
     },
   },
