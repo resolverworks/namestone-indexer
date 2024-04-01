@@ -12,7 +12,7 @@ ponder.on("CypherPunk:Registered", async ({ event, context }) => {
       tokenId: tokenId,
       name: name,
       address: addr,
-      textRecords: `{avatar:"",description:"",location:"",com.twitter:"",url:""}`,
+      textRecords: `{"avatar":"","description":"","location":"","com.twitter":"","url":""}`,
       domainName: "cu-cypherpunk.eth",
       coinTypes: "{}",
       registeredAt: event.block.timestamp,
@@ -42,9 +42,7 @@ ponder.on("CypherPunk:TextChanged", async ({ event, context }) => {
   await NftSubdomain.update({
     id: tokenId,
     data: ({ current }) => {
-      console.log("current", current);
       const textRecords = JSON.parse(current.textRecords);
-      console.log("textRecords", textRecords);
       textRecords[key] = value;
       return {
         textRecords: JSON.stringify(textRecords),
