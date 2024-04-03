@@ -6,9 +6,18 @@ ponder.on("CypherPunk:Registered", async ({ event, context }) => {
   const name = event.args.name;
   const addr = event.args.owner;
 
-  await NftSubdomain.create({
+  await NftSubdomain.upsert({
     id: tokenId,
-    data: {
+    create: {
+      tokenId: tokenId,
+      name: name,
+      address: addr,
+      textRecords: `{"avatar":"","description":"","location":"","com.twitter":"","url":""}`,
+      domainName: "cu-cypherpunk.eth",
+      coinTypes: "{}",
+      registeredAt: event.block.timestamp,
+    },
+    update: {
       tokenId: tokenId,
       name: name,
       address: addr,
@@ -20,18 +29,26 @@ ponder.on("CypherPunk:Registered", async ({ event, context }) => {
   });
 });
 
-// ponder.on("CypherPunk:Transfer", async ({ event, context }) => {
-//   const { NftSubdomain } = context.db;
-//   const tokenId = event.args.tokenId;
-//   const addr = event.args.to;
+ponder.on("CypherPunk:Transfer", async ({ event, context }) => {
+  const { NftSubdomain } = context.db;
+  const tokenId = event.args.tokenId;
+  const addr = event.args.to;
 
-//   await NftSubdomain.update({
-//     id: tokenId,
-//     data: {
-//       address: addr,
-//     },
-//   });
-// });
+  await NftSubdomain.upsert({
+    id: tokenId,
+    create: {
+      tokenId: tokenId,
+      address: addr,
+      textRecords: `{"avatar":"","description":"","location":"","com.twitter":"","url":""}`,
+      domainName: "cu-cypherpunk.eth",
+      coinTypes: "{}",
+    },
+    update: {
+      tokenId: tokenId,
+      address: addr,
+    },
+  });
+});
 
 ponder.on("CypherPunk:TextChanged", async ({ event, context }) => {
   const { NftSubdomain } = context.db;

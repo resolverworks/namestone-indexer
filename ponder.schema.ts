@@ -4,9 +4,9 @@ export default createSchema((p) => ({
   NftSubdomain: p.createTable({
     id: p.bigint(),
     tokenId: p.bigint(),
-    registeredAt: p.bigint(),
-    domainName: p.string(),
-    name: p.string(),
+    registeredAt: p.bigint().optional(),
+    domainName: p.string().optional(),
+    name: p.string().optional(),
     textRecords: p.string(),
     coinTypes: p.string(),
     address: p.string(),
