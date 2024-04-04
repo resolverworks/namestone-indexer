@@ -13,12 +13,11 @@ export default createConfig({
     //     process.env.PONDER_RPC_URL_8453 || "https://base.llamarpc.com"
     //   ),
     // },
-    abitrumsepolia: {
-      chainId: 421614,
+    abitrum: {
+      chainId: 42161,
       transport: rateLimit(
         http(
-          process.env.PONDER_RPC_URL_421614 ||
-            "https://sepolia-rollup.arbitrum.io/rpc	"
+          process.env.PONDER_RPC_URL_42161 || "https://arb1.arbitrum.io/rpc"
         ),
         { requestsPerSecond: 10 }
       ),
@@ -32,8 +31,8 @@ export default createConfig({
     //   startBlock: 7128431,
     // },
     CypherPunk: {
-      network: "abitrumsepolia",
-      address: "0xcdB7fafde2212ec26F58F275FedF07a6Ef69814c",
+      network: "abitrum",
+      address: "0xEC2244b547BD782FC7DeefC6d45E0B3a3cbD488d",
       abi: CypherPunk,
       startBlock: 26834458,
     },
