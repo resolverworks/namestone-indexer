@@ -12,6 +12,7 @@ ponder.on("CypherPunk:Registered", async ({ event, context }) => {
       tokenId: tokenId,
       name: name,
       address: addr,
+      owner: addr,
       textRecords: `{"avatar":"https://imagedelivery.net/UJ5oN2ajUBrk2SVxlns2Aw/1f2016ba-f414-4ec0-80c8-d02d5e694d00/public","description":"","location":"","com.twitter":"","url":""}`,
       domainName: "cu-cypherpunk.eth",
       coinTypes: "{}",
@@ -30,6 +31,7 @@ ponder.on("CypherPunk:Transfer", async ({ event, context }) => {
       data: {
         tokenId: tokenId,
         address: addr,
+        owner: addr,
       },
     });
   } catch (e) {

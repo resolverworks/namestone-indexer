@@ -10,5 +10,6 @@ export default createSchema((p) => ({
     textRecords: p.string(),
     coinTypes: p.string(),
     address: p.string(),
+    owner: p.string(),
   }),
 }));
