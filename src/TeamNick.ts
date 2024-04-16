@@ -27,12 +27,16 @@ ponder.on("TeamNick:AddressChanged", async ({ context, event }) => {
   const { NftSubdomain } = context.db;
   const node = event.args.node;
   const addr = event.args.addr;
-  await NftSubdomain.update({
-    id: node,
-    data: {
-      address: addr,
-    },
-  });
+  try {
+    await NftSubdomain.update({
+      id: node,
+      data: {
+        address: addr,
+      },
+    });
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 ponder.on("TeamNick:AvatarChanged", async ({ context, event }) => {
