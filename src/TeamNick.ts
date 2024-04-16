@@ -49,9 +49,7 @@ ponder.on("TeamNick:AvatarChanged", async ({ context, event }) => {
         textRecords: '{"avatar": "' + avatar + '"}',
       },
     });
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 });
 
 ponder.on("TeamNick:Transfer", async ({ context, event }) => {
