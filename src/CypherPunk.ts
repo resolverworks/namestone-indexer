@@ -7,7 +7,7 @@ ponder.on("CypherPunk:Registered", async ({ event, context }) => {
   const addr = event.args.owner;
 
   await NftSubdomain.create({
-    id: tokenId,
+    id: "cu-cypherpunk.eth_" + String(tokenId),
     data: {
       tokenId: tokenId,
       name: name,
@@ -27,7 +27,7 @@ ponder.on("CypherPunk:Transfer", async ({ event, context }) => {
   const addr = event.args.to;
   try {
     await NftSubdomain.update({
-      id: tokenId,
+      id: "cu-cypherpunk.eth_" + String(tokenId),
       data: {
         tokenId: tokenId,
         address: addr,
@@ -47,12 +47,12 @@ ponder.on("CypherPunk:TextChanged", async ({ event, context }) => {
   const value = event.args.value;
 
   await NftSubdomain.update({
-    id: tokenId,
+    id: "cu-cypherpunk.eth_" + String(tokenId),
     data: ({ current }) => {
       console.log("textrecords", current.textRecords);
       const textRecords = JSON.parse(current.textRecords);
       console.log("textrecords json", textRecords);
-      textRecords[key] = '"' + value + '"';
+      textRecords['"' + key + '"'] = '"' + value + '"';
       return {
         textRecords: JSON.stringify(textRecords),
       };

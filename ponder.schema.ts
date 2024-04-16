@@ -2,7 +2,7 @@ import { createSchema } from "@ponder/core";
 
 export default createSchema((p) => ({
   NftSubdomain: p.createTable({
-    id: p.bigint(),
+    id: p.string(),
     tokenId: p.bigint(),
     registeredAt: p.bigint().optional(),
     domainName: p.string().optional(),

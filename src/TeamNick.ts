@@ -9,14 +9,14 @@ ponder.on("TeamNick:Registered", async ({ event, context }) => {
   const avatar = event.args.avatar;
 
   await NftSubdomain.create({
-    id: node,
+    id: "teamnick.eth_" + String(node),
     data: {
       tokenId: node,
       name: name,
       address: addr,
       owner: owner,
-      textRecords: '{avatar: "' + avatar + '"}',
-      domainName: "teamnick.xyz",
+      textRecords: '{"avatar": "' + avatar + '"}',
+      domainName: "teamnick.eth",
       coinTypes: "[]",
       registeredAt: event.block.timestamp,
     },
@@ -29,7 +29,7 @@ ponder.on("TeamNick:AddressChanged", async ({ context, event }) => {
   const addr = event.args.addr;
   try {
     await NftSubdomain.update({
-      id: node,
+      id: "teamnick.eth_" + String(node),
       data: {
         address: addr,
       },
@@ -44,7 +44,7 @@ ponder.on("TeamNick:AvatarChanged", async ({ context, event }) => {
 
   try {
     await NftSubdomain.update({
-      id: node,
+      id: "teamnick.eth_" + String(node),
       data: {
         textRecords: '{"avatar": "' + avatar + '"}',
       },
@@ -59,7 +59,7 @@ ponder.on("TeamNick:Transfer", async ({ context, event }) => {
 
   try {
     await NftSubdomain.update({
-      id: tokenId,
+      id: "teamnick.eth_" + String(tokenId),
       data: {
         owner: to,
       },
