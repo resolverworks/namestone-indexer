@@ -46,7 +46,7 @@ ponder.on("TeamNick:AvatarChanged", async ({ context, event }) => {
     await NftSubdomain.update({
       id: node,
       data: {
-        textRecords: '{avatar: "' + avatar + '"}',
+        textRecords: '{"avatar": "' + avatar + '"}',
       },
     });
   } catch (e) {
