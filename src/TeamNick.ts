@@ -34,9 +34,7 @@ ponder.on("TeamNick:AddressChanged", async ({ context, event }) => {
         address: addr,
       },
     });
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 });
 
 ponder.on("TeamNick:AvatarChanged", async ({ context, event }) => {
@@ -44,12 +42,14 @@ ponder.on("TeamNick:AvatarChanged", async ({ context, event }) => {
   const node = event.args.node;
   const avatar = event.args.avatar;
 
-  await NftSubdomain.update({
-    id: node,
-    data: {
-      textRecords: '{avatar: "' + avatar + '"}',
-    },
-  });
+  try {
+    await NftSubdomain.update({
+      id: node,
+      data: {
+        textRecords: '{avatar: "' + avatar + '"}',
+      },
+    });
+  } catch (e) {}
 });
 
 ponder.on("TeamNick:Transfer", async ({ context, event }) => {
